@@ -6,6 +6,7 @@ const { Category, Product } = require('../../models');
 router.get('/', (req, res) => {
   // find all categories
   // be sure to include its associated Products
+  console.log("GET categories")
   Category.findAll({
     include: {
       model: Product,
@@ -19,6 +20,7 @@ router.get('/', (req, res) => {
     }
   })
     .then(dbCategoryData => {
+      console.log(dbCategoryData)
       if (!dbCategoryData) {
         res.status(404).json({ message: "No post found with this id" });
         return;
